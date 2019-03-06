@@ -21,7 +21,7 @@
     },
     "scripts": {
         "build-prod": "cross-env NODE_ENV=production node ./build/build.js",
-        "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.config.js",
+        "dev": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --config ./build/webpack.config.js",
         "watch": "webpack --watch",
         "start": "npm run dev",
         "monaca:preview": "npm run dev & npm run watch",
