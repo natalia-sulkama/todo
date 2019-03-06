@@ -2,17 +2,17 @@
 <f7-block class="todo">
   <h2>Create a new list</h2>
   <f7-list id="todo-form" form>
-    <f7-list-input id="title-input" type="text" name="listname" placeholder="Today's tasks" required validate error-message="Your list needs a name!" clear-button inputStyle="font-size: 25px;" v-on:input="checkFormValidity" info="Write a name for your list"></f7-list-input>
+    <f7-list-input id="title-input" type="text" name="listname" placeholder="Today's tasks" required validate error-message="Your list needs a name!" clear-button inputStyle="font-size: 25px;" v-on:input="checkFormValidity" label="Name of your list"></f7-list-input>
 
-    <f7-list-input id="item-input" type="text" name="listitem" placeholder="e.g. Buy milk, read a book, wash dishes..." inputStyle="font-size: 18px;" v-on:input="checkFormValidity" info="What needs to be done?"></f7-list-input>
+    <f7-list-input id="item-input" type="text" name="listitem" placeholder="e.g. Buy milk, read a book, wash dishes..." inputStyle="font-size: 18px;" v-on:input="checkFormValidity" label="What needs to be done?"></f7-list-input>
     <f7-button id="add-task-btn" @click="newItem">
       <f7-icon f7="add" id="addicon" size="25px"></f7-icon> Add task
     </f7-button>
   </f7-list>
 
-  <f7-row id="list-preview-row">
+  <f7-row v-if="titleExists || listItems.length != 0" id="list-preview-row">
     <f7-col id="list-preview-col">
-      <h2 v-if="titleExists">List preview</h2>
+      <h2>List preview</h2>
     </f7-col>
     <f7-col id="create-list-col">
       <f7-button id="create-list-btn" fill @click="createList" :disabled="disabled == 1 ? true : false">
@@ -142,8 +142,12 @@ h2 {
   color: #93a04a;
 }
 
+#title-input {
+  padding-top: 5px;
+}
+
 #item-input {
-  padding-bottom: 20px;
+  padding-bottom: 35px;
 }
 
 #addicon {
@@ -153,16 +157,14 @@ h2 {
 
 #add-task-btn {
   max-width: 150px;
-  margin-top: -45px;
+  margin-top: -40px;
   font-size: 18px;
   position: absolute;
   right: 10px;
 }
 
 #list-title-preview {
-  padding-top: 20px;
-  margin-bottom: -15px;
-  padding-left: 10px;
+  padding: 20px 0 10px 10px;
   font-size: 18px;
   color: #fff;
 }
@@ -183,6 +185,10 @@ h2 {
   font-size: 30px;
   margin-right: -5px;
   margin-left: 10px;
+}
+
+#todo-preview {
+  padding-top: 5px;
 }
 
 #list-preview-row {
